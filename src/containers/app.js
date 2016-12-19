@@ -1,48 +1,19 @@
-'use strict';
-
-/* Setup ==================================================================== */
-import React, { Component } from 'react'
-import {
-  Navigator,
-  Text,
-  View,
-  TouchableOpacity,
-  Image,
-  StatusBar,
-} from 'react-native'
+import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import {createStore, combineReducers, compose} from 'redux'
-import NavigationBar from 'react-native-navbar'
-import SideMenu from 'react-native-side-menu'
+import Sample from '../components/SampleAddItems'
+import * as ItemsActions from '../actions/items'
 
-
-/* Component ==================================================================== */
-class AppContainer extends Component {
-  /**
-    * On first load
-    */
-  componentDidMount = () => {
-   // TODO
-   // ADD FIREBASE INIT HERE
-  }
-  return(
-    //TODO
-  )
-  render(){
-    return(
-      //TODO
-    )
+function mapStateToProps(state) {
+  return {
+    onlineItems: state.items.onlineList,
+    offlineItems: state.items.offlineList,
+    connectionChecked: state.items.connectionChecked,
+    connected: state.items.connected
   }
 }
 
-// Define which part of the state we're passing to this component
-const mapStateToProps = (state) => ({
-  //TODO
-});
+function mapDispatchToProps(dispatch) {
+  return bindActionCreators(ItemsActions, dispatch)
+}
 
-// Define the actions this component may dispatch
-const mapDispatchToProps = {
-  //TODO
-};
-
-export default connect(mapStateToProps, mapDispatchToProps)(AppContainer);
+export default connect(mapStateToProps, mapDispatchToProps)(Sample)

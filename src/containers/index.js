@@ -6,18 +6,9 @@ import thunk from 'redux-thunk'
 
 import App from './app'
 
-// All redux reducers (rolled into one mega-reducer)
-import rootReducer from '../reducers/index'
+import configureStore from '../store/configureStore'
 
-// Load middleware
-let middleware = [
-  thunk, // Allows action creators to return functions (not just plain objects)
-];
-
-// Init redux store (using the given reducer & middleware)
-const store = compose(
-  applyMiddleware(...middleware)
-)(createStore)(rootReducer);
+let store = configureStore()
 
 // Wrap App in Redux provider (makes Redux available to all sub-components)
 export default class AppContainer extends Component {
