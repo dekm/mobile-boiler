@@ -1,15 +1,20 @@
 import { initializeApp } from 'firebase'
 import { addItemSuccess, removeItemSuccess, goOnline, goOffline } from './actions/items'
-
-
-
-const firebaseApp = initializeApp({
-  apiKey: "AIzaSyDUUc8fGOWHpaegxo_XzHbT8TBMIrcAAnY",
-  authDomain: "restaurant-aware.firebaseapp.com",
-  databaseURL: "https://restaurant-aware.firebaseio.com",
-  storageBucket: "restaurant-aware.appspot.com",
-  messagingSenderId: "675136691429"
+// you will need to create this fb_config file with your fb details
+// mine looks like this
+/*
+export default const firebaseApp = initializeApp({
+  apiKey: "XXX",
+  authDomain: "XXX",
+  databaseURL: "XXX",
+  storageBucket: "XXX",
+  messagingSenderId: "XXX"
 })
+
+*/
+import firebaseApp from './fb_config'
+
+
 export const itemsRef = firebaseApp.database().ref('items')
 const connectedRef = firebaseApp.database().ref('.info/connected')
 
